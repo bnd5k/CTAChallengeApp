@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    if save?
+    @user = User.new(params[:user])
+    if @user.save
       flash[:success] = "Welcome!"
-      redirect_to root_url
+      redirect_to users_url
     else
       render 'new'
       flash[:error] = "Please try again."
@@ -37,10 +37,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy 
    User.find_by_id(params[:id]).destroy
    flash[:success] = "User has been deleted"
-   redirect_to root_url
+   redirect_to users_url 
   end
 
 

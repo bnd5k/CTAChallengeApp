@@ -1,18 +1,22 @@
 CTAChallengeApp::Application.routes.draw do
 
-  root :to => 'users#index'
-  
+  root :to => 'challenges#index'
+ 
   get '/users', :controller => :users, :action => :index, :as => :users
   get '/user/:id', :controller => :users, :action => :show, :as => :user
-
   get '/users/new', :controller => :users, :action => :new, :as => :new_user
-  post '/users/create', :controller => :users, :action => :create
-
+  post '/users/', :controller => :users, :action => :create
   get '/user/:id/edit', :controller => :users, :action => :edit, :as => :edit_user
   put 'user/:id/update', :controller => :users, :action => :update
+  delete 'user/:id', :controller => :users, :action => :destroy
 
-  delete 'users/:id', :controller => :users, :action => :destroy
-
+  get '/challenges', :controller => :challenges, :action => :index, :as => :challenges
+  get '/challenge/:id', :controller => :challenges, :action => :show, :as => :challange
+  get '/challenges/new', :controller => :challenges, :action => :new, :as => :new_challenge
+  post '/challenges', :controller => :challenges, :action => :create
+  get '/challenges/:id/edit', :controller => :challenges, :action => :edit, :as => :edit_challenge
+  put '/challenges/:id/update', :controller => :challenges, :action => :update
+  delete '/challenge/:id', :controller => :chalenges, :action => :destroy
 
 
 
