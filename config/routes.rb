@@ -18,6 +18,12 @@ CTAChallengeApp::Application.routes.draw do
   put '/challenges/:id/update', :controller => :challenges, :action => :update
   delete '/challenge/:id', :controller => :chalenges, :action => :destroy
 
-
+  get '/articles', :controller => :articles, :action => :index, :as => :articles
+  get '/article/:id', :controller => :articles, :action => :show, :as => :article
+  get '/articles/new', :controller => :articles, :action => :new, :as => :new_article
+  post '/articles', :controller => :articles, :action => :create
+  get '/articles/:id/edit', :controller => :articles, :action => :edit, :as => :edit_article
+  put '/articles/:id/update', :controller => :artciles, :action => :update
+  delete '/article/:id', :controller => :articles, :action => :destroy
 
 end
