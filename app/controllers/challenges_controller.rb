@@ -13,8 +13,8 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = Challenge.new
-    if @challenge.save(params[:challenge])
+    @challenge = Challenge.new(params[:challenge])
+    if @challenge.save
       flash[:success] = "New CTA Challenge has been added."
       redirect_to challenges_url
     else
