@@ -5,12 +5,8 @@ class Challenge < ActiveRecord::Base
   has_many :users, :through  => :user_challenges
   validates_presence_of :date, :duration
 
-  def self.winning_time
+  def self.winner
     Challenge.find(:first, :order => "duration desc")
   end
 
-  def self.winner_names
-    #users.map(&:name)
-    # 
-  end
 end
