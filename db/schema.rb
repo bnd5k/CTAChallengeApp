@@ -11,21 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505173338) do
+ActiveRecord::Schema.define(:version => 20120509161544) do
 
   create_table "articles", :force => true do |t|
     t.string   "link"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "title"
   end
 
   create_table "challenges", :force => true do |t|
     t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.time     "duration"
   end
+
+  create_table "user_challenges", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "challenge_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "user_challenges", ["challenge_id"], :name => "index_user_challenges_on_challenge_id"
+  add_index "user_challenges", ["user_id", "challenge_id"], :name => "index_user_challenges_on_user_id_and_challenge_id", :unique => true
+  add_index "user_challenges", ["user_id"], :name => "index_user_challenges_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

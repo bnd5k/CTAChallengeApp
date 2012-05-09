@@ -6,21 +6,31 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :start_time, :class => 'control-label' %>
+    <%= f.label :duration, :class => 'control-label' %>
     <div class="controls">
-      <%= f.time_select :start_time, :class => 'time_select' %>
+      <%= f.time_select :duration, :class => 'time_select' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :end_time, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.time_select :end_time, :class => 'time_select' %>
+  <%= f.fields_for :user  do |ff| %>
+
+    <div class="control-group">
+      <%= label_tag 'user[name]', 'Name',:class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'user[name]', '',  :class => 'text_field' %>
+      </div>
     </div>
-  </div>
+
+    <div class="control-group">
+      <%= label_tag  'user[email]', 'Email',  :class => 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag 'user[email]', '',  :class => 'text_field' %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit "Log it!", :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                challenges_path, :class => 'btn' %>
-  </div>
-<% end %>
+      challenges_path, :class => 'btn' %>
+    </div>
+  <% end %>

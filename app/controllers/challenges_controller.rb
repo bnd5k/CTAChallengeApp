@@ -14,6 +14,10 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(params[:challenge])
+    user_name = params[:user][:name]
+    user_email = params[:user][:email]
+    user = @challenge.users.find_or_create(user_name, user_email)
+    @challenge.users << user
     if @challenge.save
       flash[:success] = "New CTA Challenge has been added."
       redirect_to challenges_url

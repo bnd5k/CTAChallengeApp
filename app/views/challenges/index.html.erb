@@ -3,22 +3,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:start_time) %></th>
-      <th><%= model_class.human_attribute_name(:end_time) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%= model_class.human_attribute_name(:rider) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @challenges.each do |challenge| %>
       <tr>
-        <td><%= link_to challenge.id, challenge_path(challenge) %></td>
-        <td><%= challenge.date %></td>
-        <td><%= challenge.start_time %></td>
-        <td><%= challenge.end_time %></td>
-        <td><%=l challenge.created_at %></td>
+        <td><%= link_to challenge.date, challenge_path(challenge) %></td>
+        <td><%= link_to challenge.duration, challenge_path(challenge) %></td>
+        <td><%= link_to challenge.users.name, user_path(challenge) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_challenge_path(challenge), :class => 'btn btn-mini' %>
