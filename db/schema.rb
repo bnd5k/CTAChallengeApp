@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509161544) do
+ActiveRecord::Schema.define(:version => 20120510213050) do
 
   create_table "articles", :force => true do |t|
     t.string   "link"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120509161544) do
   add_index "user_challenges", ["user_id"], :name => "index_user_challenges_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "username"
     t.string   "email"
     t.boolean  "admin",      :default => false
     t.datetime "created_at",                    :null => false

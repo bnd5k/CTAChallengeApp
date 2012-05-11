@@ -1,5 +1,5 @@
 class Challenge < ActiveRecord::Base
-  attr_accessible :date, :duration, :user
+  attr_accessible :date, :duration, :user, :username
 
   has_many :user_challenges
   has_many :users, :through  => :user_challenges

@@ -12,9 +12,10 @@
   <tbody>
     <% @challenges.each do |challenge| %>
       <tr>
-        <td><%= link_to challenge.date, challenge_path(challenge) %></td>
-        <td><%= link_to challenge.duration, challenge_path(challenge) %></td>
-        <td><%= link_to challenge.users.name, user_path(challenge) %></td>
+        <td><%= link_to challenge.date.strftime(" %m/%d/%Y"), challenge_path(challenge) %></td>
+        <td><%= link_to challenge.duration.strftime("%I h, %M m, %S s"), challenge_path(challenge) %></td>
+        <% first_user = challenge.users.first %>
+        <td><%= link_to first_user.username, user_path(first_user) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_challenge_path(challenge), :class => 'btn btn-mini' %>
@@ -32,3 +33,4 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_challenge_path,
             :class => 'btn btn-primary' %>
+            

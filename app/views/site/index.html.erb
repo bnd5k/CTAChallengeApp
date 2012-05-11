@@ -10,9 +10,9 @@
 <br />
 <br />
 <p> The Current Record for the CTA Challenge is </p>
-<%= @winner.duration %>
+<%= @winner.duration.strftime("%I Hours %M Minutes and %S seconds")  %>
 <p> held by </p>
-<%= @winner.users.name %>
+<%= @winner.users.first.username %>
 <p>
 
 <%= link_to  "Post your time", new_challenge_url %>
